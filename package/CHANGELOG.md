@@ -28,5 +28,9 @@ This is the first release of the project example.
 - adds a `./unity-project` folder to hold a development Unity project that is used to build and test the Unity package.
 
 
+### Fixed
+- docs: the main README.md uses the correct path to the `./package/LICENSE.md` file
+
+
 <!--begin_changelog-->
 
