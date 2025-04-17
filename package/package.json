@@ -1,0 +1,26 @@
+{
+  "name": "io.troublecat.unity-package-example",
+  "version": "0.0.0-prerelease",
+  "displayName": "Unity Package Example",
+  "description": "An example of how to structure a Unity Package Project",
+  "unity": "2021.3",
+  "dependencies": {},
+  "changelogUrl": "https://github.com/troublecatstudios/unity-package-example/blob/develop/package/CHANGELOG.md",
+  "documentationUrl": "https://troublecat.io/unity-package-example",
+  "licensesUrl": "https://github.com/troublecatstudios/unity-package-example/blob/develop/package/LICENSE.md",
+  "keywords": [
+    "Tools",
+    "Utilities"
+  ],
+  "author": {
+    "name": "TroubleCat Studios",
+    "url": "https://troublecat.io"
+  },
+  "private": true,
+  "hideInEditor": false,
+  "samples": [],
+  "type": "library",
+  "testables": [
+    "io.troublecat.unity-package-example"
+  ]
+}

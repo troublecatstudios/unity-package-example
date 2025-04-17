@@ -1,0 +1,24 @@
+name: 'Create Open UPM Tag'
+description: 'Creates a upm/* git tag so that new releases are available on openupm'
+inputs:
+  source_tag:
+    description: 'The version tag to base the upm tag off of'
+    required: true
+outputs:
+  upm_tag:
+    description: "The new upm/* tag that was created"
+    value: ${{ steps.changelog_contents.outputs.result }}
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.source_tag }}
+    - name: "Split ./packages into temp branch"
+      shell: bash
+      run: |
+        git subtree split -P "./package" -b upm_${{ inputs.source_tag }}
+    - uses: actions-ecosystem/action-push-tag@v1
+      with:
+        tag: "upm/${{ inputs.source_tag }}"
+        message: "releasing ${{ inputs.source_tag }} for open upm"
