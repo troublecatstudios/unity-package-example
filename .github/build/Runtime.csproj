@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Runtime</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Runtime</PackageId>
+    <Authors>Trouble Cat Studios</Authors>
+    <Description>An example Unity package project</Description>
+    <PackageProjectUrl>https://troublecat.io/unity-package-example</PackageProjectUrl>
+    <PackageTags>unity3d, library</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+  </PropertyGroup>
+
+  <Import Project="$(CiCommons)unityreferences.targets" />
+
+  <ItemGroup>
+    <!-- include supporting package files -->
+    <None Include="$(RepoRoot)README.md" Pack="true" PackagePath=""/>
+    <None Include="$(RepoRoot)package/LICENSE.md" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="$(RepoRoot)package/Runtime/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.7.115" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

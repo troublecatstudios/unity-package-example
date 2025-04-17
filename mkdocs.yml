@@ -1,0 +1,58 @@
+site_name: Example Unity Package
+site_author: Trouble Cat Studios
+site_description: >-
+  An example of how to structure a Unity Package Project
+
+# Repository
+repo_name: troublecatstudios/unity-package-example
+repo_url: https://github.com/troublecatstudios/unity-package-example
+
+# Copyright
+copyright: Copyright &copy; 2024 - 2025 Trouble Cat Studios
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+  features:
+    - navigation.top
+    - navigation.sections
+    - navigation.tabs
+    - content.code.annotate
+    - content.code.copy
+    - toc.follow
+  font:
+    text: Roboto
+    code: Roboto Mono
+plugins:
+  - search
+  - include_dir_to_nav
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - tables
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      use_pygments: true
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        # Mermaid diagrams
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.inlinehilite
+  - pymdownx.escapeall:
+      hardbreak: true
+extra_javascript:
+  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
+nav:
+  - Home: README.md
