@@ -55,9 +55,9 @@ jobs:
         shell: bash
         run: |
           cd ./.github/build
-          dotnet build ./Noir.csproj
-          dotnet build ./NoirEditor.csproj
-          dotnet pack --configuration Release Noir.csproj
+          dotnet build ./Runtime.csproj
+          dotnet build ./Editor.csproj
+          dotnet pack --configuration Release Runtime.csproj
       - name: Archive build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -127,7 +127,7 @@ jobs:
         shell: bash
         run: |
           cd ./.github/scripts
-          dotnet ./dotnet2md/Parser.dll ./../../../.build/bin/NoirEditor/Release/netcoreapp3.1/ ./../../../docs/reference/ Noir NoirEditor
+          dotnet ./dotnet2md/Parser.dll ./../../../.build/bin/Editor/Release/netcoreapp3.1/ ./../../../docs/reference/ Runtime Editor
       - name: Check for git changes
         id: check_changes
         run: |
