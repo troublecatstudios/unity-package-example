@@ -19,5 +19,5 @@ For more info, see our [contribution guidelines](./CONTRIBUTING.md).
 [release]: https://github.com/troublecatstudios/unity-package-example/releases
 [release-badge]: https://img.shields.io/github/v/release/troublecatstudios/unity-package-example?style=for-the-badge&logo=github
 
-[license]: ./../../../package/LICENSE.md
+[license]: ./package/LICENSE.md
 [license-badge]: https://img.shields.io/github/license/troublecatstudios/unity-package-example?style=for-the-badge
