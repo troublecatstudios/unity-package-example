@@ -3,6 +3,8 @@ name: Build Projects
 on:
   workflow_dispatch:
   pull_request:
+    branches-ignore:
+      - stable
     paths:
       - package/**
       - .github/workflows/build.yaml
