@@ -20,7 +20,7 @@ tests:
 
 runtime:
 - changed-files:
-  - any-glob-to-any-file: 'package/Runtime/Noir/**/*'
+  - any-glob-to-any-file: 'package/Runtime/**/*'
 
 editor:
 - changed-files:

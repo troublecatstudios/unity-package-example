@@ -2,9 +2,8 @@ name: 'Update package version'
 description: 'updates the package version using the release type and nerdbank.gitversioning'
 inputs:
   release_type:
-    description: 'Release type. Must be one of the following: "major", "minor" or "patch"'
-    default: patch
-    required: true
+    description: "The type of release"
+    default: dev
 outputs:
   new_version:
     description: "The updated version"
@@ -31,7 +30,9 @@ runs:
     - name: Update version
       id: versioning
       shell: bash
-      run: npm run update-version ${{ inputs.release_type }}
+      run: |
+        cd .github/actions/version
+        npm run update-version ${{ inputs.release_type }} || exit 1
     - uses: actions/github-script@v7
       id: package_version
       with:

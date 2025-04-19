@@ -1,4 +1,4 @@
-name: Release Automation
+name: Create OpenUPM tag
 
 on:
   workflow_dispatch:

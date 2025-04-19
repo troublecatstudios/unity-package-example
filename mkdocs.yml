@@ -56,3 +56,14 @@ extra_javascript:
   - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
 nav:
   - Home: README.md
+  - Features:
+    - features/continuous-integration.md
+    - features/deployment.md
+    - features/documentation-site.md
+    - features/openupm.md
+  - How to:
+    - howto/create-a-release.md
+  - Reference:
+      - reference/README.md
+      - UnityPackageExample: reference/UnityPackageExample
+      - UnityPackageExampleEditor: reference/UnityPackageExampleEditor

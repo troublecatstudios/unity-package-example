@@ -1,0 +1,84 @@
+name: Create a release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release type'
+        type: choice
+        default: dev
+        options:
+          - alpha
+          - beta
+          - rc
+          - dev
+          - stable
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@v4
+
+    # Increment the version according to the semver release type
+    # -----------------------------
+    # note: this uses either the release type from the actions-ecosystem/action-release-label
+    # step or the type chosen in the workflow_dispatch
+    - uses: ./.github/actions/version
+      id: versioning
+      with:
+        release_type: ${{ inputs.release_type }}
+
+    # Update the changelog
+    # -----------------------------
+    - uses: ./.github/actions/changelog
+      id: changelog
+      if: steps.versioning.outcome == 'success'
+      with:
+        version: ${{ steps.versioning.outputs.new_version_tag }}
+
+    - name: Commit changelog updates
+      if: steps.versioning.outcome == 'success'
+      shell: bash
+      run: |
+        git config user.name github-actions[bot]
+        git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+        git add -A
+        git commit -m 'auto(docs): update changelog ${{ steps.versioning.outputs.new_version_tag }}'
+
+    - name: Push changelog updates
+      if: inputs.release_type == 'stable' && steps.versioning.outcome == 'success'
+      shell: bash
+      run: git push
+
+    # Push version tag
+    # -----------------------------
+    - uses: actions-ecosystem/action-push-tag@v1
+      if: steps.versioning.outcome == 'success'
+      with:
+        tag: ${{ steps.versioning.outputs.new_version_tag }}
+        message: "${{ steps.versioning.outputs.new_version_tag }}"
+
+    # Create GitHub Release
+    # -----------------------------
+    - uses: actions/create-release@v1
+      if: steps.versioning.outcome == 'success'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.versioning.outputs.new_version_tag }}
+        release_name: ${{ steps.versioning.outputs.new_version_tag }}
+        body: ${{ steps.changelog.outputs.content }}
+
+    # Create/Update the upm tag
+    # -----------------------------
+    - uses: ./.github/actions/upm
+      id: upm
+      if: steps.versioning.outcome == 'success'
+      with:
+        source_tag: ${{ steps.versioning.outputs.new_version_tag }}
