@@ -37,6 +37,20 @@ jobs:
       with:
         release_type: ${{ inputs.release_type }}
 
+    - name: Commit version change - ${{ steps.versioning.outputs.new_version_tag }}
+      if: steps.versioning.outcome == 'success'
+      shell: bash
+      run: |
+        git config user.name github-actions[bot]
+        git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+        git add -A
+        git commit -m 'auto(ci): update package version ${{ steps.versioning.outputs.new_version_tag }}'
+
+    - name: Push version updates
+      if: inputs.release_type == 'stable' && steps.versioning.outcome == 'success'
+      shell: bash
+      run: git push
+
     # Update the changelog
     # -----------------------------
     - uses: ./.github/actions/changelog
