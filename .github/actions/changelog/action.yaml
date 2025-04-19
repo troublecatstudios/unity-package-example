@@ -28,6 +28,6 @@ runs:
       id: changelog_contents
       with:
         script: |
-          const updateChangelog = require('./.github/actions/changelog/update-changelog');
+          const { updateChangelog } = require('./.github/actions/changelog/update-changelog');
           return await updateChangelog("${{ inputs.version }}");
         result-encoding: string
