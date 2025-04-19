@@ -61,7 +61,7 @@ jobs:
 
     # Push version tag
     # -----------------------------
-    - name: Push version tag - ${{ steps.versioning.outputs.new_version_tag }}
+    - name: Push version tags - ${{ steps.versioning.outputs.new_version_tag }}
       if: steps.versioning.outcome == 'success'
       env:
         TAG: ${{ steps.versioning.outputs.new_version_tag }}
@@ -70,6 +70,9 @@ jobs:
       run: |
         git tag -a "${TAG}" -m "${MESSAGE}"
         git push origin "${TAG}"
+        git subtree split -P "./package" -b upm_${TAG}
+        git tag -a "upm/${TAG}" -m ""releasing ${TAG} for open upm"
+        git push origin "upm/${TAG}"
 
 
     # Create GitHub Release
@@ -82,11 +85,3 @@ jobs:
         tag_name: ${{ steps.versioning.outputs.new_version_tag }}
         release_name: ${{ steps.versioning.outputs.new_version_tag }}
         body: ${{ steps.changelog.outputs.content }}
-
-    # Create/Update the upm tag
-    # -----------------------------
-    - uses: ./.github/actions/upm
-      id: upm
-      if: steps.versioning.outcome == 'success'
-      with:
-        source_tag: ${{ steps.versioning.outputs.new_version_tag }}
