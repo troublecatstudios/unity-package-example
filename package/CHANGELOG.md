@@ -24,7 +24,7 @@ This is the first release of the project example.
 - ci: adds `deploy-docs` workflow that publishes the documentation within `./docs` to GitHub Pages using [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
 - adds a `./package` folder to hold all the code that should be released with the Unity package.
 - adds a `./unity-project` folder to hold a development Unity project that is used to build and test the Unity package.
-
+- ci: versioning is handled by [Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning) via the root `./version.json` file.
 
 ### Fixed
 - docs: the main README.md uses the correct path to the `./package/LICENSE.md` file
