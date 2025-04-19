@@ -2,9 +2,6 @@
   "name": "noir-ci-version",
   "private": true,
   "description": "ci scripts for updating the version of the noir library",
-  "engines": {
-    "node": "20.*"
-  },
   "scripts": {
     "update-version": "npm i && node set-package-version.js"
   },
