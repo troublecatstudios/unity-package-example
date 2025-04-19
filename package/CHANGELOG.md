@@ -28,6 +28,7 @@ This is the first release of the project example.
 - docs: adds some placeholder documentation files for each of the project features
 - docs: adds documentation for how to publish an OpenUPM package using the project
 - docs: updates the mkdocs configuration with sections for features, how to and reference documentation
+- editor: adds a custom inspector for the `Example` monobehaviour
 
 ### Fixed
 - docs: the main README.md uses the correct path to the `./package/LICENSE.md` file
