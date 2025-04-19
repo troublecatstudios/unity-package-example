@@ -58,7 +58,7 @@ nav:
   - Home: README.md
   - Features:
     - features/continuous-integration.md
-    - features/continuous-deployment.md
+    - features/deployment.md
     - features/documentation-site.md
     - features/openupm.md
   - How to:
