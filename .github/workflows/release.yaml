@@ -1,19 +1,18 @@
-name: Release Automation
+name: Create a release
 
 on:
   workflow_dispatch:
     inputs:
       release_type:
+        description: 'Release type'
         type: choice
-        description: Release Type
+        default: dev
         options:
-        - major
-        - minor
-        - patch
-
-  push:
-    branches:
-    - stable
+          - alpha
+          - beta
+          - rc
+          - dev
+          - stable
 
 permissions:
   contents: write
@@ -25,46 +24,6 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - uses: actions/checkout@v4
-    # Retrieve the merged PR information
-    # -----------------------------
-    - uses: actions-ecosystem/action-get-merged-pull-request@v1
-      id: get-merged-pull-request
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-
-    # Determine the kind of release to create
-    # -----------------------------
-    # note: this uses the release/* labels on the merged PR
-    # so if no PR was merged then this step won't run.
-    - uses: actions-ecosystem/action-release-label@v1
-      id: release-label
-      if: ${{ steps.get-merged-pull-request.outputs.title != null }}
-      with:
-        labels: ${{ steps.get-merged-pull-request.outputs.labels }}
-
-    # Get the latest semver tag as our "source version"
-    # -----------------------------
-    - uses: actions-ecosystem/action-get-latest-tag@v1
-      id: get-latest-tag
-      with:
-        semver_only: true
-
-    # Exit the workflow if there's no release type
-    # -----------------------------
-    - uses: actions/github-script@v7
-      id: check
-      if: steps.release-label.outputs.level == null && github.event.inputs.release_type == null
-      with:
-        script: |
-          const { owner, repo } = context.repo
-          console.log('Cancelling ...');
-          const run_id = "${{ github.run_id }}";
-          await github.rest.actions.cancelWorkflowRun({ owner, repo, run_id });
-          return 'stop'
-        result-encoding: string
-    - name: Waiting for cancellation
-      if: steps.release-label.outputs.level == null && github.event.inputs.release_type == null
-      run: sleep 60
 
     # Increment the version according to the semver release type
     # -----------------------------
@@ -72,31 +31,43 @@ jobs:
     # step or the type chosen in the workflow_dispatch
     - uses: ./.github/actions/version
       id: versioning
-      if: steps.release-label.outputs.level != null || github.event.inputs.release_type != null
       with:
-        release_type: ${{ steps.release-label.outputs.level && steps.release-label.outputs.level || github.event.inputs.release_type }}
-
+        release_type: ${{ inputs.release_type }}
 
     # Update the changelog
     # -----------------------------
     - uses: ./.github/actions/changelog
       id: changelog
-      if: steps.release-label.outputs.level != null || github.event.inputs.release_type != null
+      if: steps.versioning.outcome == 'success'
       with:
         version: ${{ steps.versioning.outputs.new_version_tag }}
+
+    - name: Commit changelog updates
+      if: steps.versioning.outcome == 'success'
+      shell: bash
+      run: |
+        git config user.name github-actions[bot]
+        git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+        git add -A
+        git commit -m 'auto(docs): update changelog ${{ steps.versioning.outputs.new_version_tag }}'
+
+    - name: Push changelog updates
+      if: inputs.release_type == 'stable' && steps.versioning.outcome == 'success'
+      shell: bash
+      run: git push
 
     # Push version tag
     # -----------------------------
     - uses: actions-ecosystem/action-push-tag@v1
-      if: ${{ steps.versioning.outputs.new_version != null }}
+      if: steps.versioning.outcome == 'success'
       with:
         tag: ${{ steps.versioning.outputs.new_version_tag }}
-        message: "${{ steps.versioning.outputs.new_version_tag }}: PR #${{ steps.get-merged-pull-request.outputs.number }} ${{ steps.get-merged-pull-request.outputs.title }}"
+        message: "${{ steps.versioning.outputs.new_version_tag }}"
 
     # Create GitHub Release
     # -----------------------------
     - uses: actions/create-release@v1
-      if: ${{ steps.versioning.outputs.new_version != null }}
+      if: steps.versioning.outcome == 'success'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
@@ -108,17 +79,6 @@ jobs:
     # -----------------------------
     - uses: ./.github/actions/upm
       id: upm
-      if: ${{ steps.versioning.outputs.new_version != null }}
+      if: steps.versioning.outcome == 'success'
       with:
         source_tag: ${{ steps.versioning.outputs.new_version_tag }}
-
-
-    # Post comment back to PR with release information
-    # -----------------------------
-    - uses: actions-ecosystem/action-create-comment@v1
-      if: ${{ steps.get-merged-pull-request.outputs.title != null }}
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        number: ${{ steps.get-merged-pull-request.outputs.number }}
-        body: |
-          The new version [${{ steps.versioning.outputs.new_version_tag }}](https://github.com/${{ github.repository }}/releases/tag/v${{ steps.versioning.outputs.new_version_tag }}) has been released
