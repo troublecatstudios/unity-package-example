@@ -70,7 +70,7 @@ jobs:
       run: |
         git tag -a "${TAG}" -m "${MESSAGE}"
         git push origin "${TAG}"
-        git subtree split -P "./package" -b upm_${TAG}
+        git subtree split -P "package" -b upm_${TAG}
         git tag -a "upm/${TAG}" -m ""releasing ${TAG} for open upm"
         git push origin "upm/${TAG}"
 
