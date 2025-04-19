@@ -4,6 +4,10 @@ inputs:
   release_type:
     description: "The type of release"
     default: dev
+  checkout:
+    description: '"true" if the action should checkout the repository before running'
+    default: ''
+    required: false
 outputs:
   new_version:
     description: "The updated version"
@@ -16,6 +20,7 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v4
+      if: inputs.checkout == 'true'
     - name: Setup dotnet
       uses: actions/setup-dotnet@v4
       with:
