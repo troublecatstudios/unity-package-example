@@ -61,11 +61,16 @@ jobs:
 
     # Push version tag
     # -----------------------------
-    - uses: actions-ecosystem/action-push-tag@v1
+    - name: Push version tag - ${{ steps.versioning.outputs.new_version_tag }}
       if: steps.versioning.outcome == 'success'
-      with:
-        tag: ${{ steps.versioning.outputs.new_version_tag }}
-        message: "${{ steps.versioning.outputs.new_version_tag }}"
+      env:
+        TAG: ${{ steps.versioning.outputs.new_version_tag }}
+        MESSAGE: "${{ steps.versioning.outputs.new_version_tag }}"
+      shell: bash
+      run: |
+        git tag -a "${TAG}" -m "${MESSAGE}"
+        git push origin "${TAG}"
+
 
     # Create GitHub Release
     # -----------------------------
