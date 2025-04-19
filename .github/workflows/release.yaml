@@ -66,14 +66,16 @@ jobs:
       env:
         TAG: ${{ steps.versioning.outputs.new_version_tag }}
         MESSAGE: "${{ steps.versioning.outputs.new_version_tag }}"
+        ORIGINAL_BRANCH: ${{ github.ref_name }}
       shell: bash
       run: |
         git tag -a "${TAG}" -m "${MESSAGE}"
         git push origin "${TAG}"
         git subtree split -P "package" -b upm_${TAG}
         git checkout upm_${TAG}
-        git tag -a "upm/${TAG}" -m ""releasing ${TAG} for open upm"
+        git tag -a "upm/${TAG}" -m "releasing ${TAG} for open upm"
         git push origin "upm/${TAG}"
+        git checkout $ORIGINAL_BRANCH
 
 
     # Create GitHub Release
