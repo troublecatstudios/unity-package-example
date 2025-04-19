@@ -33,6 +33,7 @@ This is the first release of the project example.
 ### Fixed
 - docs: the main README.md uses the correct path to the `./package/LICENSE.md` file
 - ci: the `build` workflow only runs when related files change.
+- ci: labeler configuration is updated to apply the `runtime` label to changes within `./package/Runtime/**`.
 
 
 <!--begin_changelog-->
