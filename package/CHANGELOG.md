@@ -21,7 +21,7 @@ This is the first release of the project example.
 - ci: adds `upm-release` workflow that handles creating specific git tags for publishing releases to [OpenUPM](https://openupm.com/)
 - ci: adds `release` workflow that creates new releases when a pull request is merged to the `stable` branch. See our [getting started](./../docs/README.md) doc for more information.
 - ci: adds `cats` workflow that posts cute cat gifs to your pull requests because everything is made better by cats. 🐈‍⬛
-- ci: adds `docs-deploy` workflow that publishes the documentation within `./docs` to GitHub Pages using [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
+- ci: adds `deploy-docs` workflow that publishes the documentation within `./docs` to GitHub Pages using [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
 - adds a `./package` folder to hold all the code that should be released with the Unity package.
 - adds a `./unity-project` folder to hold a development Unity project that is used to build and test the Unity package.
 
