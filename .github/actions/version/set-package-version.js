@@ -43,6 +43,7 @@ const args = process.argv.slice(2);
     const pkg = require(packageJsonFile);
     pkg.version = newVersion;
     await fs.writeFile(packageJsonFile, JSON.stringify(pkg, null, 2));
+    log(JSON.stringify(pkg, null, 2));
   } catch (e) {
     err(`error while updating package version`, e);
     console.error(e);
