@@ -76,6 +76,7 @@ nav:
     - features/openupm.md
   - How to:
     - howto/create-a-release.md
+    - howto/regenerate-documentation.md
   - Reference:
       - reference/README.md
       - UnityPackageExample: reference/UnityPackageExample
