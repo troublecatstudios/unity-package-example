@@ -7,14 +7,23 @@ site_description: >-
 repo_name: troublecatstudios/unity-package-example
 repo_url: https://github.com/troublecatstudios/unity-package-example
 
+site_url: 'https://troublecat.io/unity-package-example/'
+
 # Copyright
 copyright: Copyright &copy; 2024 - 2025 Trouble Cat Studios
 
+extra:
+  version:
+    provider: mike
+
 theme:
   name: material
+  custom_dir: docs/overrides
   palette:
-    scheme: slate
+    scheme: troublecat
   features:
+    - search.highlight
+    - search.suggest
     - navigation.top
     - navigation.sections
     - navigation.tabs
@@ -22,8 +31,10 @@ theme:
     - content.code.copy
     - toc.follow
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Noto Sans
+    code: Anonymous Pro
+  logo: images/troublecat-logo-trans-wht.png
+  favicon: images/favicon.ico
 plugins:
   - search
   - include_dir_to_nav
@@ -54,6 +65,8 @@ markdown_extensions:
       hardbreak: true
 extra_javascript:
   - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
+extra_css:
+  - stylesheets/troublecat.css
 nav:
   - Home: README.md
   - Features:

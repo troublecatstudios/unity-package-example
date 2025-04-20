@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+docs: adds styling/content to mkdocs-material site so that it is visually more in line with [the Trouble Cat Studios website](https://troublecat.io)
+
 
 <!--begin_changelog-->
 
