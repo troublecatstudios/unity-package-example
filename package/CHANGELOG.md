@@ -11,6 +11,7 @@ ci: adds the generated mkdocs-material site folder (`./site/`) to the `.gitignor
 docs: adds styling/content to mkdocs-material site so that it is visually more in line with [the Trouble Cat Studios website](https://troublecat.io)
 
 ### Changed
+ci: `build` workflow only runs if the `Editor` or `Runtime` code files change
 ci: docs workflow is moved to a composite action
 ci: docs action uses [mike](https://github.com/jimporter/mike) to deploy seperate documentation updates for each released version. See [the versioning documentation](https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/) on material for mkdocs' website for more information.
 
