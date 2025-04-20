@@ -1,6 +1,6 @@
 {
   "name": "io.troublecat.unity-package-example",
-  "version": "0.0.0-prerelease",
+  "version": "0.0.1",
   "displayName": "Unity Package Example",
   "description": "An example of how to structure a Unity Package Project",
   "unity": "2021.3",
