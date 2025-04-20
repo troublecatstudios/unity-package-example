@@ -20,6 +20,8 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.versioning.outputs.new_version_tag }}
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -102,3 +104,18 @@ jobs:
         tag_name: ${{ steps.versioning.outputs.new_version_tag }}
         release_name: ${{ steps.versioning.outputs.new_version_tag }}
         body: ${{ steps.changelog.outputs.content }}
+
+  docs:
+    runs-on: ubuntu-latest
+    needs: [release]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: ./.github/actions/docs
+        id: docs
+        with:
+          version: ${{ needs.release.outputs.version }}
+          update_latest: true
