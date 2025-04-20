@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+<!--begin_changelog-->
+
+## [v0.0.1] - 2025-4-20
+
+
 This is the first release of the project example.
 
 ### Added
@@ -36,5 +42,6 @@ This is the first release of the project example.
 - ci: labeler configuration is updated to apply the `runtime` label to changes within `./package/Runtime/**`.
 
 
-<!--begin_changelog-->
+
+
 
