@@ -38,6 +38,7 @@ runs:
         pip install mkdocs-macros-plugin
         pip install mkdocs-glightbox
         pip install mkdocs-include-dir-to-nav
+        pip install markdown-callouts
         pip install pillow cairosvg mike
     - name: Build documentation site (latest)
       if: inputs.update_latest == 'true'

@@ -4,10 +4,10 @@ You may want to wipe your documentation site and start over. This could be becau
 
 
 1. Check out the site locally
-2. Build the included `mkdocs.dockerfile` image
+2. Build the included `mkdocs-mike.dockerfile` image
 
 ```bash
-docker build -t mkdocs:local -f ./.github/scripts/mkdocs.dockerfile .
+docker build -t mkdocs_mike:local -f ./.github/scripts/mkdocs-mike.dockerfile .
 ```
 
 3. Run the following commands to reset your site
@@ -20,22 +20,22 @@ docker run -it `
     -e GIT_COMMITTER_NAME=ci-bot `
     -e GIT_COMMITTER_EMAIL=ci-bot@troublecat.io `
     -p 8000:8000 `
-    -v ${PWD}:/tmp/source mkdocs:local 'mike delete --all'
+    -v ${PWD}:/tmp/source mkdocs_mike:local 'mike delete --all'
 docker run -it `
     -e GIT_COMMITTER_NAME=ci-bot `
     -e GIT_COMMITTER_EMAIL=ci-bot@troublecat.io `
     -p 8000:8000 `
-    -v ${PWD}:/tmp/source mkdocs:local 'mike deploy develop'
+    -v ${PWD}:/tmp/source mkdocs_mike:local 'mike deploy develop'
 docker run -it `
     -e GIT_COMMITTER_NAME=ci-bot `
     -e GIT_COMMITTER_EMAIL=ci-bot@troublecat.io `
     -p 8000:8000 `
-    -v ${PWD}:/tmp/source mkdocs:local 'mike alias develop latest'
+    -v ${PWD}:/tmp/source mkdocs_mike:local 'mike alias develop latest'
 docker run -it `
     -e GIT_COMMITTER_NAME=ci-bot `
     -e GIT_COMMITTER_EMAIL=ci-bot@troublecat.io `
     -p 8000:8000 `
-    -v ${PWD}:/tmp/source mkdocs:local 'mike set-default latest'
+    -v ${PWD}:/tmp/source mkdocs_mike:local 'mike set-default latest'
 ```
 
 
@@ -47,22 +47,22 @@ docker run -it \
     -e GIT_COMMITTER_NAME=ci-bot \
     -e GIT_COMMITTER_EMAIL=ci-bot@troublecat.io \
     -p 8000:8000 \
-    -v $(PWD):/tmp/source mkdocs:local 'mike delete --all'
+    -v $(PWD):/tmp/source mkdocs_mike:local 'mike delete --all'
 docker run -it \
     -e GIT_COMMITTER_NAME=ci-bot \
     -e GIT_COMMITTER_EMAIL=ci-bot@troublecat.io \
     -p 8000:8000 \
-    -v $(PWD):/tmp/source mkdocs:local 'mike deploy develop'
+    -v $(PWD):/tmp/source mkdocs_mike:local 'mike deploy develop'
 docker run -it \
     -e GIT_COMMITTER_NAME=ci-bot \
     -e GIT_COMMITTER_EMAIL=ci-bot@troublecat.io \
     -p 8000:8000 \
-    -v $(PWD):/tmp/source mkdocs:local 'mike alias develop latest'
+    -v $(PWD):/tmp/source mkdocs_mike:local 'mike alias develop latest'
 docker run -it \
     -e GIT_COMMITTER_NAME=ci-bot \
     -e GIT_COMMITTER_EMAIL=ci-bot@troublecat.io \
     -p 8000:8000 \
-    -v $(PWD):/tmp/source mkdocs:local 'mike set-default latest'
+    -v $(PWD):/tmp/source mkdocs_mike:local 'mike set-default latest'
 ```
 
 These commands will make changes to your `gh-pages` branch locally, but they won't push any of the changes. So make sure you do that at the end.

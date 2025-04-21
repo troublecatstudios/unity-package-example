@@ -41,6 +41,8 @@ plugins:
 markdown_extensions:
   - admonition
   - attr_list
+  - callouts
+  - github-callouts
   - md_in_html
   - pymdownx.details
   - tables

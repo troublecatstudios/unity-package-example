@@ -13,6 +13,7 @@ docs: initial content for changelog management, continuous integration, deployme
 
 ### Fixed
 docs: getting started documentation git flow graph is more readable in dark mode.
+docs: github-style markdown callouts no longer render as block comments.
 
 ### Changed
 ci: `build` workflow only runs if the `Editor` or `Runtime` code files change
