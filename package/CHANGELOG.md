@@ -11,11 +11,17 @@ ci: adds the generated mkdocs-material site folder (`./site/`) to the `.gitignor
 docs: adds styling/content to mkdocs-material site so that it is visually more in line with [the Trouble Cat Studios website](https://troublecat.io)
 docs: initial content for changelog management, continuous integration, deployment and openupm features is added.
 
+### Fixed
+docs: getting started documentation git flow graph is more readable in dark mode.
+
 ### Changed
 ci: `build` workflow only runs if the `Editor` or `Runtime` code files change
 ci: docs workflow is moved to a composite action
 ci: docs action uses [mike](https://github.com/jimporter/mike) to deploy seperate documentation updates for each released version. See [the versioning documentation](https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/) on material for mkdocs' website for more information.
 upm: reduces minimum build version in OpenUPM config to `0.0.1`
+docs: getting started documentation includes branch naming convention guidelines.
+docs: getting started documentation includes tips for submitting pull requests.
+docs: getting started documentation includes labeling details.
 
 ### Removed
 ci: removes the unused `release-upm-manual` workflow
