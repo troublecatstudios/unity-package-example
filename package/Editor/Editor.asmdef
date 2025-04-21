@@ -1,7 +1,9 @@
 {
     "name": "Editor",
     "rootNamespace": "UnityPackageExampleEditor",
-    "references": [],
+    "references": [
+        "GUID:0c4999638117871488f36672efccea27"
+    ],
     "includePlatforms": [
         "Editor"
     ],
