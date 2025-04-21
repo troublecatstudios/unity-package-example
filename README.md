@@ -4,7 +4,7 @@ An example GitHub Repository showing how to structure a Unity package project.
 [![release][release-badge]][release]
 [![license][license-badge]][license]
 
-[Docs](./docs/README.md) | [Changelog](./package/CHANGELOG.md) | [License](./package/License.md)
+[Getting Started](./docs/README.md) | [Changelog](./package/CHANGELOG.md) | [License](./package/License.md)
 
 **Supported Unity Versions**: v2021.3+
 
