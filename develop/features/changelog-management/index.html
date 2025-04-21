@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#changelog-management" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -844,6 +849,38 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#changelog-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changelog management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changelog management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -863,7 +900,12 @@
 
   <h1>Changelog management</h1>
 
-
+<h2 id="changelog-management">Changelog management</h2>
+<p>It's important for projects to keep a listing of the changes made during development. A properly managed changelog can be an incredibly useful resource to other developers not only in locating when particular features or fixes were added, but also in identifying when breaking or conflicting changes were added to a project.</p>
+<p>This project uses a custom GitHub Action to keep the changelog updated when creating new releases, this document details how that action works and how to customize it.</p>
+<h3 id="overview">Overview</h3>
+<p>During development and in the <code>develop</code> branch, all the changes made since the previous release are listed within the "Unreleased" section of the changelog. This makes merging changes from multiple pull requests easier since the changes to the changelog file are always within the same section, reducing the need to sort out changelog merge conflicts.</p>
+<p>When <a href="../../howto/create-a-release/">a new release is created</a> the <code>changelog</code> action is run and given the version of the release. The changelog action then moves all the contents under the <code>## [Unreleased]</code> section to a new section with the specified version as the header. The changelog file is added to the release before the tag is created.</p>
 
 
 

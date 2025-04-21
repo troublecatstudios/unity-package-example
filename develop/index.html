@@ -417,11 +417,44 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#creating-a-new-release" class="md-nav__link">
+  <a href="#branch-naming" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating a new release
+      Branch naming
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull requests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pull requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      General tips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-request-labeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull request labeling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -965,11 +998,44 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#creating-a-new-release" class="md-nav__link">
+  <a href="#branch-naming" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating a new release
+      Branch naming
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull requests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pull requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      General tips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-request-labeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull request labeling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1033,34 +1099,60 @@
   <h1>Home</h1>
 
 <h2 id="development-git-flow">Development git flow</h2>
-<p>Development in the Unity Package Example uses a mainline branching scheme with release tagging. All development occurs off of the <code>develop</code> branch. The <code>stable</code> branch is used as a merge point to generate new release tags.</p>
+<p>Development in the Unity Package Example uses a mainline branching scheme with release tagging. All development occurs off of the <code>develop</code> branch. Release tags are created off of the <code>develop</code> branch via a GitHub Action. See <a href="howto/create-a-release/">the release guide</a> for instructions on how to use the action to publish a new release.</p>
 <p>The diagram below shows how the git workflow looks as a new feature is started, worked on and then merged into <code>develop</code> with a follow-up minor version release.</p>
-<pre class="mermaid"><code>%%{init: { 'gitGraph': {'mainBranchName': 'stable'}} }%%
+<pre class="mermaid"><code>%%{init: { 'theme': 'dark', 'gitGraph': {'mainBranchName': 'develop'}} }%%
 gitGraph
     commit tag:"v0.0.1"
-    branch develop
-    checkout develop
     commit
     commit
     commit
-    branch feat/my-feature
-    checkout feat/my-feature
+    branch dev/my-feature
+    checkout dev/my-feature
     commit
     commit
     checkout develop
-    merge feat/my-feature id: "pull request"
-    commit
-    checkout stable
-    merge develop id: "official release" tag:"v0.1.0"</code></pre>
-<h3 id="creating-a-new-release">Creating a new release</h3>
-<p>Releases are automatically created when a pull request to <code>stable</code> is merged if it includes one of the <code>release/*</code> labels. When a new pull request is created it is checked for the presence of a release tag. If no release tag is specified and the pull request is targeting the <code>stable</code> branch it will be marked as invalid and won't be allowed to merge.</p>
+    merge dev/my-feature id: "pull request"
+    commit id: "official release" tag:"v0.1.0"</code></pre>
+<h3 id="branch-naming">Branch naming</h3>
+<p>This project uses the following branch naming conventions:</p>
+<table>
+<thead>
+<tr>
+<th>Branch Pattern</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dev/*</code></td>
+<td><code>dev/my-new-feature</code></td>
+<td>the default branch prefix. You should use this for most of the branches you create when working on the project.</td>
+</tr>
+<tr>
+<td><code>exp/*</code></td>
+<td><code>exp/upgrade-unity-6</code></td>
+<td>used when experimenting with new features/processes or for other changes that are unlikely to be submitted to the <code>develop</code> branch.</td>
+</tr>
+<tr>
+<td><code>fix/[\d+]</code></td>
+<td><code>fix/123</code></td>
+<td>is used when working on a fix for an open issue to the project.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pull-requests">Pull requests</h3>
+<p>All changes to the project should be submitted via a pull request. This gives the maintainers of the project a chance to look over the changes to ensure documentation, code quality, etc meet the project standards. It also allows the automated processes in our <a href="features/continuous-integration/">continuous integration</a> pipeline to run.</p>
+<h4 id="general-tips">General tips</h4>
 <ol>
-<li>Create a new pull request to <code>stable</code></li>
-<li>Ensure the <code>./package/CHANGELOG.md</code> has been updated, all changes for the release should be under the <code>## [Unreleased]</code> header</li>
-<li>Add the appropriate <code>release/*</code> label</li>
-<li>Once all review comments are resolved and the workflows pass, merge your pull request</li>
-<li>Verify the correct <code>vX.X.X</code> and <code>upm/vX.X.X</code> tags have been created, the release appears in the <a href="/troublecatstudios/unity-package-example/releases">project releases</a> and OpenUPM</li>
+<li>Keep the amount of changes in a single pull request small. This not only allows reviewers to more quickly look over your changes but it also increases the likelyhood of your changes being accepted. If you submit a pull request with 10 different features and fixes, it may not be accepted because 2-3 of those may be in progress with other contributors, or may not fit the project roadmap.</li>
+<li>The title of your pull request should be short but long enough to describe exactly what is being fixed/changed/added.</li>
+<li>Use the description of your pull request to expand on your title. Explain the "why" of the pull request and include links to supporting materials, images, diagrams, blog posts, etc.</li>
+<li>Use in-line comments to draw reviewers to key areas of your changes.</li>
 </ol>
+<h4 id="pull-request-labeling">Pull request labeling</h4>
+<p>We use labels to quickly scan through open pull requests and issues. The <code>labeler</code> workflow ensures that each pull request has labels attached to it that indicate which areas of the project have been updated.</p>
 <h3 id="merging-a-develop-only-change">Merging a develop only change</h3>
 <p>Pull requests made to the <code>develop</code> branch shouldn't have <code>release/*</code> labels, adding them won't do anything.</p>
 <blockquote>

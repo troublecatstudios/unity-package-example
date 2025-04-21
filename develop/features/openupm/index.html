@@ -566,6 +566,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#publishing-new-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing new releases
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -947,6 +956,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#publishing-new-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing new releases
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -982,6 +1000,19 @@
 <li>Fill out and submit the <a href="https://openupm.com/packages/add/">add package form</a> on the OpenUPM website.</li>
 <li>Your package should be available on the OpenUPM registry within 24 hours.</li>
 </ol>
+<h3 id="publishing-new-releases">Publishing new releases</h3>
+<p>If you used the <code>.upm.yaml</code> file when <a href="#adding-your-package-to-openupm">adding your package to OpenUPM</a> then new releases will be picked up automatically by OpenUPM as they are published within GitHub.</p>
+<p>A manual release to OpenUPM can be created at any time by pushing a new git tag in the format of <code>upm/vX.X.X</code>. There is an example of how to do this using shell commands below.</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># replace ${TAG} with your new version number, ex: v1.2.3.dev.1</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>checkout<span class="w"> </span><span class="nv">$BRANCH_NAME</span><span class="w"> </span><span class="c1"># checkout the branch/tag you want to use as the new release</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git<span class="w"> </span>subtree<span class="w"> </span>split<span class="w"> </span>-P<span class="w"> </span><span class="s2">&quot;package&quot;</span><span class="w"> </span>-b<span class="w"> </span>upm_<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="w"> </span><span class="c1"># if you&#39;re referencing a branch, you&#39;ll need to run these</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">                                             </span><span class="c1"># commands since only the package directory is shipped in</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>git<span class="w"> </span>checkout<span class="w"> </span>upm_<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="w">                      </span><span class="c1"># unity packages</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;upm/</span><span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;releasing </span><span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="s2"> for open upm&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span><span class="s2">&quot;upm/</span><span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
 
 
 

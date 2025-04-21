@@ -485,6 +485,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Continuous integration process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c-build-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      C# build process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      API documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -920,6 +944,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Continuous integration process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c-build-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      C# build process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      API documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -944,6 +992,12 @@
   <h1>Continuous integration</h1>
 
 <h2 id="continuous-integration-process">Continuous integration process</h2>
+<p>This document describes our current continuous integration process, which is run whenever a pull-request is submitted to the project.</p>
+<h3 id="c-build-process">C# build process</h3>
+<p>When a code change is made to the Runtime or Editor projects within the package directory a dotnet build is started. The C# projects are located in <code>./.github/build/</code> so they can be updated with any third-party dependencies necessary to build your project code.</p>
+<p>When the build process completes the Runtime project will be published as a NuGet package to GitHub Packages which is useful if you're making a library and want to pull it into another build. But the main reason for the the dotnet build is to generate <code>*.dll</code> files so that API documentation can be generated.</p>
+<h3 id="api-documentation">API documentation</h3>
+<p>After the C# build completes, API documentation is automatically generated from the compiled DLLs and placed within the <code>./docs/reference</code> directory. The documentation is generated using a fork of <a href="https://github.com/isadorasophia/dotnet2md">dotnet2md</a>. Once the documentation is generated it will be committed back to your pull request so that our documentation is always up-to-date with the latest changes.</p>
 
 
 
