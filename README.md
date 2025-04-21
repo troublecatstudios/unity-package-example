@@ -4,7 +4,7 @@ An example GitHub Repository showing how to structure a Unity package project.
 [![release][release-badge]][release]
 [![license][license-badge]][license]
 
-[Getting Started](./docs/README.md) | [Changelog](./package/CHANGELOG.md) | [License](./package/License.md)
+[Getting Started](./docs/README.md) | [Changelog](./package/CHANGELOG.md) | [License](./package/LICENSE.md)
 
 **Supported Unity Versions**: v2021.3+
 
@@ -20,4 +20,4 @@ For more info, see our [contribution guidelines](./CONTRIBUTING.md).
 [release-badge]: https://img.shields.io/github/v/release/troublecatstudios/unity-package-example?style=for-the-badge&logo=github
 
 [license]: ./package/LICENSE.md
-[license-badge]: https://img.shields.io/github/license/troublecatstudios/unity-package-example?style=for-the-badge
+[license-badge]: https://img.shields.io/badge/LICENSE-MIT-blue?style=for-the-badge
