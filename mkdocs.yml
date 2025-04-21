@@ -76,6 +76,7 @@ nav:
     - features/deployment.md
     - features/documentation-site.md
     - features/openupm.md
+    - features/development-project.md
   - How to:
     - howto/create-a-release.md
     - howto/regenerate-documentation.md
