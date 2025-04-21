@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 ci: adds the generated mkdocs-material site folder (`./site/`) to the `.gitignore`
 docs: adds styling/content to mkdocs-material site so that it is visually more in line with [the Trouble Cat Studios website](https://troublecat.io)
+docs: initial content for changelog management, continuous integration, deployment and openupm features is added.
 
 ### Changed
 ci: `build` workflow only runs if the `Editor` or `Runtime` code files change
