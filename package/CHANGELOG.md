@@ -15,6 +15,8 @@ ci: `build` workflow only runs if the `Editor` or `Runtime` code files change
 ci: docs workflow is moved to a composite action
 ci: docs action uses [mike](https://github.com/jimporter/mike) to deploy seperate documentation updates for each released version. See [the versioning documentation](https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/) on material for mkdocs' website for more information.
 
+### Removed
+ci: removes the unused `release-upm-manual` workflow
 
 <!--begin_changelog-->
 
