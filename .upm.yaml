@@ -23,7 +23,7 @@ gitTagPrefix: 'upm/'
 # The regular expression that specifies intentionally untracked Git tags that should be ignored
 gitTagIgnore: '-master$'
 # The minimal version to build. Leave it blank to build all versions.
-minVersion: '1.0.0'
+minVersion: '0.0.1'
 # The featured image URL. It should point to a valid image URL instead of a web page that presents the image.
 # Leave it blank to use the generated default image.
 image: ''

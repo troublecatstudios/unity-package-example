@@ -1,4 +1,4 @@
-## How to contribute to Noir?
+## How to contribute?
 
 [Getting Started Guide](./docs/README.md)
 

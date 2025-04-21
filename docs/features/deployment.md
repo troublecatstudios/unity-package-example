@@ -12,3 +12,7 @@ The project version is stored within the `./version.json` at the root of the pro
 #### Creating a release
 
 See [our "How to create a release" guide](./../howto/create-a-release.md) for instructions on how to publish new releases of your Unity package using the workflows within the repository.
+
+### OpenUPM
+
+During the release creation process, this project will automatically create git tags with a `upm/*` prefix so they can be picked up by [OpenUPM](https://openupm.com/) and included in the registry. See the [OpenUPM feature](./openupm.md) documentation for more information.

@@ -4,39 +4,50 @@ title: Getting started
 
 ## Development git flow
 
-Development in the Unity Package Example uses a mainline branching scheme with release tagging. All development occurs off of the `develop` branch. The `stable` branch is used as a merge point to generate new release tags.
+Development in the Unity Package Example uses a mainline branching scheme with release tagging. All development occurs off of the `develop` branch. Release tags are created off of the `develop` branch via a GitHub Action. See [the release guide](./howto/create-a-release.md) for instructions on how to use the action to publish a new release.
 
 The diagram below shows how the git workflow looks as a new feature is started, worked on and then merged into `develop` with a follow-up minor version release.
 
 ```mermaid
-%%{init: { 'gitGraph': {'mainBranchName': 'stable'}} }%%
+%%{init: { 'theme': 'dark', 'gitGraph': {'mainBranchName': 'develop'}} }%%
 gitGraph
     commit tag:"v0.0.1"
-    branch develop
-    checkout develop
     commit
     commit
     commit
-    branch feat/my-feature
-    checkout feat/my-feature
+    branch dev/my-feature
+    checkout dev/my-feature
     commit
     commit
     checkout develop
-    merge feat/my-feature id: "pull request"
-    commit
-    checkout stable
-    merge develop id: "official release" tag:"v0.1.0"
+    merge dev/my-feature id: "pull request"
+    commit id: "official release" tag:"v0.1.0"
 ```
 
-### Creating a new release
+### Branch naming
 
-Releases are automatically created when a pull request to `stable` is merged if it includes one of the `release/*` labels. When a new pull request is created it is checked for the presence of a release tag. If no release tag is specified and the pull request is targeting the `stable` branch it will be marked as invalid and won't be allowed to merge.
+This project uses the following branch naming conventions:
 
-1. Create a new pull request to `stable`
-2. Ensure the `./package/CHANGELOG.md` has been updated, all changes for the release should be under the `## [Unreleased]` header
-3. Add the appropriate `release/*` label
-4. Once all review comments are resolved and the workflows pass, merge your pull request
-5. Verify the correct `vX.X.X` and `upm/vX.X.X` tags have been created, the release appears in the [project releases](/troublecatstudios/unity-package-example/releases) and OpenUPM
+| Branch Pattern | Example | Description |
+|----------------|---------|-------------|
+| `dev/*`        | `dev/my-new-feature` | the default branch prefix. You should use this for most of the branches you create when working on the project. |
+| `exp/*`        | `exp/upgrade-unity-6` | used when experimenting with new features/processes or for other changes that are unlikely to be submitted to the `develop` branch. |
+| `fix/[\d+]`    | `fix/123` | is used when working on a fix for an open issue to the project. |
+
+### Pull requests
+
+All changes to the project should be submitted via a pull request. This gives the maintainers of the project a chance to look over the changes to ensure documentation, code quality, etc meet the project standards. It also allows the automated processes in our [continuous integration](./features/continuous-integration.md) pipeline to run.
+
+#### General tips
+
+1. Keep the amount of changes in a single pull request small. This not only allows reviewers to more quickly look over your changes but it also increases the likelyhood of your changes being accepted. If you submit a pull request with 10 different features and fixes, it may not be accepted because 2-3 of those may be in progress with other contributors, or may not fit the project roadmap.
+2. The title of your pull request should be short but long enough to describe exactly what is being fixed/changed/added.
+3. Use the description of your pull request to expand on your title. Explain the "why" of the pull request and include links to supporting materials, images, diagrams, blog posts, etc.
+4. Use in-line comments to draw reviewers to key areas of your changes.
+
+#### Pull request labeling
+
+We use labels to quickly scan through open pull requests and issues. The `labeler` workflow ensures that each pull request has labels attached to it that indicate which areas of the project have been updated.
 
 ### Merging a develop only change
 
