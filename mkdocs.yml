@@ -45,6 +45,7 @@ markdown_extensions:
   - github-callouts
   - md_in_html
   - pymdownx.details
+  - pymdownx.keys
   - tables
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -71,9 +72,11 @@ extra_css:
   - stylesheets/troublecat.css
 nav:
   - Home: README.md
+  - Getting started:
+    - getting_started/README.md
+    - getting_started/development.md
   - Features:
-    - features/continuous-integration.md
-    - features/deployment.md
+    - features/automation.md
     - features/documentation-site.md
     - features/openupm.md
     - features/development-project.md
