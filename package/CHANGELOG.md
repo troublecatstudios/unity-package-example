@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+<!--begin_changelog-->
+
+## [v0.1.0] - 2025-4-22
+
+
 ### Added
 unity: configures the included unity project so that it can be opened cleanly.
 ci: adds the generated mkdocs-material site folder (`./site/`) to the `.gitignore`
@@ -28,7 +34,8 @@ docs: getting started documentation includes labeling details.
 ### Removed
 ci: removes the unused `release-upm-manual` workflow
 
-<!--begin_changelog-->
+
+
 
 ## [v0.0.1] - 2025-4-20
 
