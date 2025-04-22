@@ -1,4 +1,4 @@
-## Regenerating documentation
+# Regenerating documentation
 
 You may want to wipe your documentation site and start over. This could be because you have too many versions published and the navigation is becoming cluttered, or you've recently cloned the example project repository and want to start customizing it for your own use. This document will guide you through the necessary steps to reset your documentation site.
 

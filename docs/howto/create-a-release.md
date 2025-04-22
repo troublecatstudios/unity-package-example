@@ -1,4 +1,4 @@
-## Creating a release
+# Creating a release
 
 All releases are created via the `release` workflow.
 
