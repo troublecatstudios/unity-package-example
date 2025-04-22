@@ -80,6 +80,7 @@ nav:
   - How to:
     - howto/create-a-release.md
     - howto/regenerate-documentation.md
+    - howto/update-a-version.md
   - Reference:
       - reference/README.md
       - UnityPackageExample: reference/UnityPackageExample
