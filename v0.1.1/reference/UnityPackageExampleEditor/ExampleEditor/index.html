@@ -1,0 +1,1960 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An example of how to structure a Unity Package Project">
+      
+      
+        <meta name="author" content="Trouble Cat Studios">
+      
+      
+        <link rel="canonical" href="https://troublecat.io/unity-package-example/v0.1.1/reference/UnityPackageExampleEditor/ExampleEditor/">
+      
+      
+        <link rel="prev" href="../../UnityPackageExample/Example/">
+      
+      
+      
+      <link rel="icon" href="../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>ExampleEditor - Example Unity Package</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CAnonymous+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Anonymous Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/troublecat.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="troublecat" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exampleeditor" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../../..">
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+    <header class="md-header-pre">
+        <nav class="md-header__inner md-grid">
+            <div class="md-header__title">
+                <a class="brand" href="/">Trouble Cat Studios<b>.</b></a>
+            </div>
+            <ul class="md-tabs__list">
+                <li class="md-tabs__item">
+                    <a class="md-tabs__link" href="/">Home</a>
+                </li>
+                <li class="md-tabs__item">
+                    <a class="md-tabs__link" href="/index.html#about">About Us</a>
+                </li>
+                <li class="md-tabs__item">
+                    <a class="md-tabs__link" href="/index.html#gallery">Gallery</a>
+                </li>
+                <li class="md-tabs__item">
+                    <a class="md-tabs__link" href="/index.html#product">Products</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Example Unity Package" class="md-header__button md-logo" aria-label="Example Unity Package" data-md-component="logo">
+      
+  <img src="../../../images/troublecat-logo-trans-wht.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Example Unity Package
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ExampleEditor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/troublecatstudios/unity-package-example" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    troublecatstudios/unity-package-example
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting_started/" class="md-tabs__link">
+          
+  
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../features/automation/" class="md-tabs__link">
+          
+  
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../howto/create-a-release/" class="md-tabs__link">
+          
+  
+  
+  How to
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Example Unity Package" class="md-nav__button md-logo" aria-label="Example Unity Package" data-md-component="logo">
+      
+  <img src="../../../images/troublecat-logo-trans-wht.png" alt="logo">
+
+    </a>
+    Example Unity Package
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/troublecatstudios/unity-package-example" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    troublecatstudios/unity-package-example
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Developing your package
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/documentation-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documentation site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/openupm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenUPM Support
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/development-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    How to
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            How to
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howto/create-a-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Creating a release
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howto/regenerate-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Regenerating documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howto/update-a-version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Updating a released version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    UnityPackageExample
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            UnityPackageExample
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UnityPackageExample/Example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    UnityPackageExampleEditor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            UnityPackageExampleEditor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ExampleEditor
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    ExampleEditor
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#constructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠 Constructors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hideflags" class="md-nav__link">
+    <span class="md-ellipsis">
+      hideFlags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    <span class="md-ellipsis">
+      name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serializedobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      serializedObject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target" class="md-nav__link">
+    <span class="md-ellipsis">
+      target
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⛹️‍♀️ Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⛹️‍♀️ Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shouldhideopenbutton" class="md-nav__link">
+    <span class="md-ellipsis">
+      ShouldHideOpenButton()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onheadergui" class="md-nav__link">
+    <span class="md-ellipsis">
+      OnHeaderGUI()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drawdefaultinspector" class="md-nav__link">
+    <span class="md-ellipsis">
+      DrawDefaultInspector()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getinstanceid" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetInstanceID()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equalsobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equals(Object)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#haspreviewgui" class="md-nav__link">
+    <span class="md-ellipsis">
+      HasPreviewGUI()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#movenexttarget" class="md-nav__link">
+    <span class="md-ellipsis">
+      MoveNextTarget()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requiresconstantrepaint" class="md-nav__link">
+    <span class="md-ellipsis">
+      RequiresConstantRepaint()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usedefaultmargins" class="md-nav__link">
+    <span class="md-ellipsis">
+      UseDefaultMargins()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getpreviewtitle" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetPreviewTitle()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gethashcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetHashCode()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getinfostring" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetInfoString()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tostring" class="md-nav__link">
+    <span class="md-ellipsis">
+      ToString()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renderstaticpreviewstring-object-int-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      RenderStaticPreview(string, Object[], int, int)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createinspectorgui" class="md-nav__link">
+    <span class="md-ellipsis">
+      CreateInspectorGUI()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleanup()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drawpreviewrect" class="md-nav__link">
+    <span class="md-ellipsis">
+      DrawPreview(Rect)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initializeobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialize(Object[])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oninspectorgui" class="md-nav__link">
+    <span class="md-ellipsis">
+      OnInspectorGUI()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oninteractivepreviewguirect-guistyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      OnInteractivePreviewGUI(Rect, GUIStyle)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onpreviewguirect-guistyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      OnPreviewGUI(Rect, GUIStyle)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onpreviewsettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      OnPreviewSettings()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reloadpreviewinstances" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReloadPreviewInstances()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repaint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repaint()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resettarget" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResetTarget()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drawheader" class="md-nav__link">
+    <span class="md-ellipsis">
+      DrawHeader()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setdirty" class="md-nav__link">
+    <span class="md-ellipsis">
+      SetDirty()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#constructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠 Constructors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hideflags" class="md-nav__link">
+    <span class="md-ellipsis">
+      hideFlags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    <span class="md-ellipsis">
+      name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serializedobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      serializedObject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target" class="md-nav__link">
+    <span class="md-ellipsis">
+      target
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⛹️‍♀️ Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⛹️‍♀️ Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shouldhideopenbutton" class="md-nav__link">
+    <span class="md-ellipsis">
+      ShouldHideOpenButton()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onheadergui" class="md-nav__link">
+    <span class="md-ellipsis">
+      OnHeaderGUI()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drawdefaultinspector" class="md-nav__link">
+    <span class="md-ellipsis">
+      DrawDefaultInspector()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getinstanceid" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetInstanceID()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equalsobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equals(Object)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#haspreviewgui" class="md-nav__link">
+    <span class="md-ellipsis">
+      HasPreviewGUI()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#movenexttarget" class="md-nav__link">
+    <span class="md-ellipsis">
+      MoveNextTarget()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requiresconstantrepaint" class="md-nav__link">
+    <span class="md-ellipsis">
+      RequiresConstantRepaint()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usedefaultmargins" class="md-nav__link">
+    <span class="md-ellipsis">
+      UseDefaultMargins()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getpreviewtitle" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetPreviewTitle()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gethashcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetHashCode()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getinfostring" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetInfoString()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tostring" class="md-nav__link">
+    <span class="md-ellipsis">
+      ToString()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renderstaticpreviewstring-object-int-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      RenderStaticPreview(string, Object[], int, int)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createinspectorgui" class="md-nav__link">
+    <span class="md-ellipsis">
+      CreateInspectorGUI()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleanup()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drawpreviewrect" class="md-nav__link">
+    <span class="md-ellipsis">
+      DrawPreview(Rect)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initializeobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialize(Object[])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oninspectorgui" class="md-nav__link">
+    <span class="md-ellipsis">
+      OnInspectorGUI()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oninteractivepreviewguirect-guistyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      OnInteractivePreviewGUI(Rect, GUIStyle)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onpreviewguirect-guistyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      OnPreviewGUI(Rect, GUIStyle)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onpreviewsettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      OnPreviewSettings()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reloadpreviewinstances" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReloadPreviewInstances()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repaint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repaint()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resettarget" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResetTarget()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drawheader" class="md-nav__link">
+    <span class="md-ellipsis">
+      DrawHeader()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setdirty" class="md-nav__link">
+    <span class="md-ellipsis">
+      SetDirty()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="exampleeditor">ExampleEditor</h1>
+<p><strong>Namespace:</strong> UnityPackageExampleEditor <br>
+<strong>Assembly:</strong> Editor.dll</p>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ExampleEditor</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Editor</span><span class="p">,</span><span class="w"> </span><span class="n">IPreviewable</span><span class="p">,</span><span class="w"> </span><span class="n">IToolModeOwner</span>
+</code></pre></div>
+<p><strong>Implements:</strong> <em><a href="../">Editor</a>, <a href="../">IPreviewable</a>, <a href="../">IToolModeOwner</a></em></p>
+<h3 id="constructors">🛠 Constructors</h3>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span><span class="w"> </span><span class="nf">ExampleEditor</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="properties">📦 Properties</h3>
+<h4 id="hideflags">hideFlags</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span><span class="w"> </span><span class="n">HideFlags</span><span class="w"> </span><span class="n">hideFlags</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="../">HideFlags</a> <br></p>
+<h4 id="name">name</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.String?view=net-7.0">string</a> <br></p>
+<h4 id="serializedobject">serializedObject</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span><span class="w"> </span><span class="n">SerializedObject</span><span class="w"> </span><span class="n">serializedObject</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="../">SerializedObject</a> <br></p>
+<h4 id="target">target</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="../">Object</a> <br></p>
+<h4 id="targets">targets</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span><span class="w"> </span><span class="n">Object</span><span class="p">[]</span><span class="w"> </span><span class="n">targets</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="../">Object[]</a> <br></p>
+<h3 id="methods">⛹️‍♀️ Methods</h3>
+<h4 id="shouldhideopenbutton">ShouldHideOpenButton()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">protected</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">ShouldHideOpenButton</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.Boolean?view=net-7.0">bool</a> <br></p>
+<h4 id="onheadergui">OnHeaderGUI()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">protected</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnHeaderGUI</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="drawdefaultinspector">DrawDefaultInspector()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">DrawDefaultInspector</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.Boolean?view=net-7.0">bool</a> <br></p>
+<h4 id="getinstanceid">GetInstanceID()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetInstanceID</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.Int32?view=net-7.0">int</a> <br></p>
+<h4 id="equalsobject">Equals(Object)</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Equals</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters</strong> <br>
+<code>other</code> <a href="https://learn.microsoft.com/en-us/dotnet/api/System.Object?view=net-7.0">Object</a> <br></p>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.Boolean?view=net-7.0">bool</a> <br></p>
+<h4 id="haspreviewgui">HasPreviewGUI()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">HasPreviewGUI</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.Boolean?view=net-7.0">bool</a> <br></p>
+<h4 id="movenexttarget">MoveNextTarget()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">MoveNextTarget</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.Boolean?view=net-7.0">bool</a> <br></p>
+<h4 id="requiresconstantrepaint">RequiresConstantRepaint()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">RequiresConstantRepaint</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.Boolean?view=net-7.0">bool</a> <br></p>
+<h4 id="usedefaultmargins">UseDefaultMargins()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">UseDefaultMargins</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.Boolean?view=net-7.0">bool</a> <br></p>
+<h4 id="getpreviewtitle">GetPreviewTitle()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">GUIContent</span><span class="w"> </span><span class="nf">GetPreviewTitle</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="../">GUIContent</a> <br></p>
+<h4 id="gethashcode">GetHashCode()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetHashCode</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.Int32?view=net-7.0">int</a> <br></p>
+<h4 id="getinfostring">GetInfoString()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetInfoString</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.String?view=net-7.0">string</a> <br></p>
+<h4 id="tostring">ToString()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">ToString</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/System.String?view=net-7.0">string</a> <br></p>
+<h4 id="renderstaticpreviewstring-object-int-int">RenderStaticPreview(string, Object[], int, int)</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Texture2D</span><span class="w"> </span><span class="nf">RenderStaticPreview</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">assetPath</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="p">[]</span><span class="w"> </span><span class="n">subAssets</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters</strong> <br>
+<code>assetPath</code> <a href="https://learn.microsoft.com/en-us/dotnet/api/System.String?view=net-7.0">string</a> <br>
+<code>subAssets</code> <a href="../">Object[]</a> <br>
+<code>width</code> <a href="https://learn.microsoft.com/en-us/dotnet/api/System.Int32?view=net-7.0">int</a> <br>
+<code>height</code> <a href="https://learn.microsoft.com/en-us/dotnet/api/System.Int32?view=net-7.0">int</a> <br></p>
+<p><strong>Returns</strong> <br>
+<a href="../">Texture2D</a> <br></p>
+<h4 id="createinspectorgui">CreateInspectorGUI()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">VisualElement</span><span class="w"> </span><span class="nf">CreateInspectorGUI</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns</strong> <br>
+<a href="../">VisualElement</a> <br></p>
+<h4 id="cleanup">Cleanup()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Cleanup</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="drawpreviewrect">DrawPreview(Rect)</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DrawPreview</span><span class="p">(</span><span class="n">Rect</span><span class="w"> </span><span class="n">previewArea</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters</strong> <br>
+<code>previewArea</code> <a href="../">Rect</a> <br></p>
+<h4 id="initializeobject">Initialize(Object[])</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">(</span><span class="n">Object</span><span class="p">[]</span><span class="w"> </span><span class="n">targets</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters</strong> <br>
+<code>targets</code> <a href="../">Object[]</a> <br></p>
+<h4 id="oninspectorgui">OnInspectorGUI()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnInspectorGUI</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="oninteractivepreviewguirect-guistyle">OnInteractivePreviewGUI(Rect, GUIStyle)</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnInteractivePreviewGUI</span><span class="p">(</span><span class="n">Rect</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">GUIStyle</span><span class="w"> </span><span class="n">background</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters</strong> <br>
+<code>r</code> <a href="../">Rect</a> <br>
+<code>background</code> <a href="../">GUIStyle</a> <br></p>
+<h4 id="onpreviewguirect-guistyle">OnPreviewGUI(Rect, GUIStyle)</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnPreviewGUI</span><span class="p">(</span><span class="n">Rect</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">GUIStyle</span><span class="w"> </span><span class="n">background</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters</strong> <br>
+<code>r</code> <a href="../">Rect</a> <br>
+<code>background</code> <a href="../">GUIStyle</a> <br></p>
+<h4 id="onpreviewsettings">OnPreviewSettings()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnPreviewSettings</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="reloadpreviewinstances">ReloadPreviewInstances()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ReloadPreviewInstances</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="repaint">Repaint()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Repaint</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="resettarget">ResetTarget()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ResetTarget</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="drawheader">DrawHeader()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DrawHeader</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="setdirty">SetDirty()</h4>
+<div class="language-csharp highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetDirty</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - 2025 Trouble Cat Studios
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["search.highlight", "search.suggest", "navigation.top", "navigation.sections", "navigation.tabs", "content.code.annotate", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
