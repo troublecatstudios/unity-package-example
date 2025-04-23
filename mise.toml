@@ -1,3 +1,10 @@
 [settings]
 asdf = false
 vfox = true
+
+[tasks."docs:docker:build"]
+run = 'docker build -t mkdocs:local -f ./.github/scripts/mkdocs.dockerfile .'
+
+[tasks."docs:preview"]
+depends = ['docs:docker:build']
+run = "docker run -it --rm -p 8000:8000 -v {{cwd}}:/docs mkdocs:local"

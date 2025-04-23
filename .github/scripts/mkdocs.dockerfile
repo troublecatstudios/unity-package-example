@@ -6,11 +6,4 @@ RUN pip install mkdocs-include-dir-to-nav
 RUN pip install markdown-callouts
 RUN pip install pillow cairosvg mike
 
-WORKDIR /tmp/source
-
-COPY mkdocs.yml     ./mkdocs.yml
-COPY ./docs         /tmp/source/docs
-
-RUN mkdocs -v build
-
 EXPOSE 8000

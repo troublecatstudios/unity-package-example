@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - dev: adds [mise](https://mise.jdx.dev/) as a development task runner
 - docs: adds tabs, snippets, captions and smartsymbols to included markdown extensions
+- dev: adds `docs:preview` task to enable previewing the documentation locally
 
 <!--begin_changelog-->
 
