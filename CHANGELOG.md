@@ -15,21 +15,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - docs: reformats some of the documentation to use new markdown extensions and formatting
 
+### Fixed
+- docs: updates formatting of changelog entries to proper lists
+
 <!--begin_changelog-->
 
 ## [v0.1.1] - 2025-4-23
 
 
 ### Added
-docs: adds how to guide for updating a previously released version.
-docs: adds installation section in getting started
+- docs: adds how to guide for updating a previously released version.
+- docs: adds installation section in getting started
 
 ### Changed
-docs: reformats existing docs, updating h1,h2,h3 etc.
-docs: updates nav for documentation site
+- docs: reformats existing docs, updating h1,h2,h3 etc.
+- docs: updates nav for documentation site
 
 ### Fixed
-meta: updates `package.json` to publish to [OpenUPM](https://openupm.com/)
+- meta: updates `package.json` to publish to [OpenUPM](https://openupm.com/)
 
 
 
@@ -38,26 +41,26 @@ meta: updates `package.json` to publish to [OpenUPM](https://openupm.com/)
 
 
 ### Added
-unity: configures the included unity project so that it can be opened cleanly.
-ci: adds the generated mkdocs-material site folder (`./site/`) to the `.gitignore`
-docs: adds styling/content to mkdocs-material site so that it is visually more in line with [the Trouble Cat Studios website](https://troublecat.io)
-docs: initial content for changelog management, continuous integration, deployment and openupm features is added.
+- unity: configures the included unity project so that it can be opened cleanly.
+- ci: adds the generated mkdocs-material site folder (`./site/`) to the `.gitignore`
+- docs: adds styling/content to mkdocs-material site so that it is visually more in line with [the Trouble Cat Studios website](https://troublecat.io)
+- docs: initial content for changelog management, continuous integration, deployment and openupm features is added.
 
 ### Fixed
-docs: getting started documentation git flow graph is more readable in dark mode.
-docs: github-style markdown callouts no longer render as block comments.
+- docs: getting started documentation git flow graph is more readable in dark mode.
+- docs: github-style markdown callouts no longer render as block comments.
 
 ### Changed
-ci: `build` workflow only runs if the `Editor` or `Runtime` code files change
-ci: docs workflow is moved to a composite action
-ci: docs action uses [mike](https://github.com/jimporter/mike) to deploy seperate documentation updates for each released version. See [the versioning documentation](https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/) on material for mkdocs' website for more information.
-upm: reduces minimum build version in OpenUPM config to `0.0.1`
-docs: getting started documentation includes branch naming convention guidelines.
-docs: getting started documentation includes tips for submitting pull requests.
-docs: getting started documentation includes labeling details.
+- ci: `build` workflow only runs if the `Editor` or `Runtime` code files change
+- ci: docs workflow is moved to a composite action
+- ci: docs action uses [mike](https://github.com/jimporter/mike) to deploy seperate documentation updates for each released version. See [the versioning documentation](https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/) on material for mkdocs' website for more information.
+- upm: reduces minimum build version in OpenUPM config to `0.0.1`
+- docs: getting started documentation includes branch naming convention guidelines.
+- docs: getting started documentation includes tips for submitting pull requests.
+- docs: getting started documentation includes labeling details.
 
 ### Removed
-ci: removes the unused `release-upm-manual` workflow
+- ci: removes the unused `release-upm-manual` workflow
 
 
 
