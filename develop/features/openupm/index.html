@@ -660,6 +660,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Publishing new releases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manually-releasing-to-openupm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manually releasing to OpenUPM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1083,6 +1098,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Publishing new releases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manually-releasing-to-openupm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manually releasing to OpenUPM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1115,17 +1145,36 @@
 </ol>
 <h2 id="publishing-new-releases">Publishing new releases</h2>
 <p>If you used the <code>.upm.yaml</code> file when <a href="#adding-your-package-to-openupm">adding your package to OpenUPM</a> then new releases will be picked up automatically by OpenUPM as they are published within GitHub.</p>
+<h3 id="manually-releasing-to-openupm">Manually releasing to OpenUPM</h3>
 <p>A manual release to OpenUPM can be created at any time by pushing a new git tag in the format of <code>upm/vX.X.X</code>. There is an example of how to do this using shell commands below.</p>
-<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># replace ${TAG} with your new version number, ex: v1.2.3.dev.1</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>checkout<span class="w"> </span><span class="nv">$BRANCH_NAME</span><span class="w"> </span><span class="c1"># checkout the branch/tag you want to use as the new release</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git<span class="w"> </span>subtree<span class="w"> </span>split<span class="w"> </span>-P<span class="w"> </span><span class="s2">&quot;package&quot;</span><span class="w"> </span>-b<span class="w"> </span>upm_<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="w"> </span><span class="c1"># if you&#39;re referencing a branch, you&#39;ll need to run these</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">                                             </span><span class="c1"># commands since only the package directory is shipped in</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>git<span class="w"> </span>checkout<span class="w"> </span>upm_<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="w">                      </span><span class="c1"># unity packages</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;upm/</span><span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;releasing </span><span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="s2"> for open upm&quot;</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span><span class="s2">&quot;upm/</span><span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="admonition note">
+<p>In the commands below, replace <code>$SOURCE</code> with the branch/tag you'd like to
+use as the source for your release and <code>$TAG</code> with the version tag name
+you'd like to create, like "v1.2.3.dev.1".</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">From most branches or tags</label><label for="__tabbed_1_2">From a upm/* tag</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>When creating a new OpenUPM release from a branch, you'll need to perform
+a few extra commands because UPM packages have to follow a strict directory
+structure.</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>checkout<span class="w"> </span><span class="nv">$SOURCE</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>subtree<span class="w"> </span>split<span class="w"> </span>-P<span class="w"> </span><span class="s2">&quot;package&quot;</span><span class="w"> </span>-b<span class="w"> </span>upm_<span class="nv">$TAG</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>checkout<span class="w"> </span>upm_<span class="nv">$TAG</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;upm/</span><span class="nv">$TAG</span><span class="s2">&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;releasing </span><span class="nv">$TAG</span><span class="s2"> for open upm&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span><span class="s2">&quot;upm/</span><span class="nv">$TAG</span><span class="s2">&quot;</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Tags prefixed with <code>upm/*</code> are already setup to work with OpenUPM so they can
+be used without any modifications to the structure.</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>checkout<span class="w"> </span><span class="nv">$SOURCE</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;upm/</span><span class="nv">$TAG</span><span class="s2">&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;releasing </span><span class="nv">$TAG</span><span class="s2"> for open upm&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span><span class="s2">&quot;upm/</span><span class="nv">$TAG</span><span class="s2">&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 
 
 

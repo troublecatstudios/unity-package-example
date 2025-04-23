@@ -1133,30 +1133,30 @@
 </code></pre></div>
 <h2 id="make-your-corrections">Make your corrections</h2>
 <p>Create a new branch from the tag and remove the tag locally.</p>
-<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>release/v0.1.0-1<span class="w">  </span><span class="c1"># (1)!</span>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>release/v0.1.0-1<span class="w">  </span><span class="c1">#(1)!</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>tag<span class="w"> </span>-d<span class="w"> </span>v0.1.0
 </code></pre></div>
+<ol>
+<li>This ensures that we're not in a <a href="https://git-scm.com/docs/user-manual#detached-head">detached head</a> state,
+    so we can create a new commit, push it and create the new tag.</li>
+</ol>
 <p>Next, make your updates to the files in the release commit and push them.</p>
 <div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;fix: hotfix release issues&#39;</span>
 </code></pre></div>
 <h2 id="push-updates-to-the-remote">Push updates to the remote</h2>
 <p>Once you've committed the changes locally, you should push them to the remote and create the replacement tag.</p>
-<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>release/v0.1.0-1<span class="w">  </span><span class="c1"># (2)!</span>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>release/v0.1.0-1<span class="w">  </span><span class="c1">#(1)!</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v0.1.0<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;hotfix of v0.1.0&#39;</span>
 </code></pre></div>
+<ol>
+<li>This new branch doesn't need to stay published once the new tag is created.</li>
+</ol>
 <p>Finally, push the tag and remove the remote branch (this is optional).</p>
 <div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v0.1.0
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>git<span class="w"> </span>push<span class="w"> </span>-d<span class="w"> </span>origin<span class="w"> </span>release/v0.1.0-1<span class="w"> </span><span class="c1">#(3)!</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>git<span class="w"> </span>branh<span class="w"> </span>-d<span class="w"> </span>release/v0.1.0-1<span class="w"> </span><span class="c1">#(4)!</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>git<span class="w"> </span>push<span class="w"> </span>-d<span class="w"> </span>origin<span class="w"> </span>release/v0.1.0-1<span class="w"> </span><span class="c1">#(1)!</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>git<span class="w"> </span>branh<span class="w"> </span>-d<span class="w"> </span>release/v0.1.0-1<span class="w"> </span><span class="c1">#(2)!</span>
 </code></pre></div>
 <ol>
-<li>
-<p>This ensures that we're not in a <a href="https://git-scm.com/docs/user-manual#detached-head">detached head</a> state,
-    so we can create a new commit, push it and create the new tag.</p>
-</li>
-<li>
-<p>This new branch doesn't need to stay published once the new tag is created.</p>
-</li>
 <li>
 <p>This will delete the branch in the remote.</p>
 </li>
