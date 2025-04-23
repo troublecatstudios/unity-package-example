@@ -14,16 +14,37 @@ The repository comes with an example `.upm.yaml` file that has all of the requir
 
 If you used the `.upm.yaml` file when [adding your package to OpenUPM](#adding-your-package-to-openupm) then new releases will be picked up automatically by OpenUPM as they are published within GitHub.
 
+
+### Manually releasing to OpenUPM
+
 A manual release to OpenUPM can be created at any time by pushing a new git tag in the format of `upm/vX.X.X`. There is an example of how to do this using shell commands below.
 
-```bash
-# replace ${TAG} with your new version number, ex: v1.2.3.dev.1
-git checkout $BRANCH_NAME # checkout the branch/tag you want to use as the new release
+!!! note ""
+    In the commands below, replace `$SOURCE` with the branch/tag you'd like to
+    use as the source for your release and `$TAG` with the version tag name
+    you'd like to create, like "v1.2.3.dev.1".
 
-git subtree split -P "package" -b upm_${TAG} # if you're referencing a branch, you'll need to run these
-                                             # commands since only the package directory is shipped in
-git checkout upm_${TAG}                      # unity packages
+=== "From most branches or tags"
 
-git tag -a "upm/${TAG}" -m "releasing ${TAG} for open upm"
-git push origin "upm/${TAG}"
-```
+    When creating a new OpenUPM release from a branch, you'll need to perform
+    a few extra commands because UPM packages have to follow a strict directory
+    structure.
+
+    ```bash
+    git checkout $SOURCE
+    git subtree split -P "package" -b upm_$TAG
+    git checkout upm_$TAG
+    git tag -a "upm/$TAG" -m "releasing $TAG for open upm"
+    git push origin "upm/$TAG"
+    ```
+
+=== "From a upm/* tag"
+
+    Tags prefixed with `upm/*` are already setup to work with OpenUPM so they can
+    be used without any modifications to the structure.
+
+    ```bash
+    git checkout $SOURCE
+    git tag -a "upm/$TAG" -m "releasing $TAG for open upm"
+    git push origin "upm/$TAG"
+    ```

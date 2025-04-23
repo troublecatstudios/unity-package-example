@@ -19,9 +19,12 @@ git checkout v0.1.0    # switch to the affected tag
 Create a new branch from the tag and remove the tag locally.
 
 ```bash
-git checkout -b release/v0.1.0-1  # (1)!
+git checkout -b release/v0.1.0-1  #(1)!
 git tag -d v0.1.0
 ```
+
+1.  This ensures that we're not in a [detached head](https://git-scm.com/docs/user-manual#detached-head) state,
+    so we can create a new commit, push it and create the new tag.
 
 Next, make your updates to the files in the release commit and push them.
 
@@ -34,25 +37,21 @@ git commit -m 'fix: hotfix release issues'
 Once you've committed the changes locally, you should push them to the remote and create the replacement tag.
 
 ```bash
-git push origin release/v0.1.0-1  # (2)!
+git push origin release/v0.1.0-1  #(1)!
 git tag -a v0.1.0 -m 'hotfix of v0.1.0'
 ```
+
+1.  This new branch doesn't need to stay published once the new tag is created.
 
 Finally, push the tag and remove the remote branch (this is optional).
 
 ```bash
 git push origin v0.1.0
-git push -d origin release/v0.1.0-1 #(3)!
-git branh -d release/v0.1.0-1 #(4)!
+git push -d origin release/v0.1.0-1 #(1)!
+git branh -d release/v0.1.0-1 #(2)!
 ```
 
+1.  This will delete the branch in the remote.
 
-1.  This ensures that we're not in a [detached head](https://git-scm.com/docs/user-manual#detached-head) state,
-    so we can create a new commit, push it and create the new tag.
-
-2.  This new branch doesn't need to stay published once the new tag is created.
-
-3.  This will delete the branch in the remote.
-
-4.  This will delete the branch locally.
+2.  This will delete the branch locally.
 

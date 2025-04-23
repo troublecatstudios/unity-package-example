@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - docs: adds tabs, snippets, captions and smartsymbols to included markdown extensions
 - dev: adds `docs:preview` task to enable previewing the documentation locally
 
+### Changed
+- docs: reformats some of the documentation to use new markdown extensions and formatting
+
 <!--begin_changelog-->
 
 ## [v0.1.1] - 2025-4-23
