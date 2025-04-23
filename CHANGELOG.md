@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+<!--begin_changelog-->
+
+## [v0.1.1] - 2025-4-23
+
+
 ### Added
 docs: adds how to guide for updating a previously released version.
 docs: adds installation section in getting started
@@ -17,7 +23,8 @@ docs: updates nav for documentation site
 ### Fixed
 meta: updates `package.json` to publish to [OpenUPM](https://openupm.com/)
 
-<!--begin_changelog-->
+
+
 
 ## [v0.1.0] - 2025-4-22
 
