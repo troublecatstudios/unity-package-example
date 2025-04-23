@@ -42,30 +42,35 @@ markdown_extensions:
   - admonition
   - attr_list
   - callouts
+  - def_list
   - github-callouts
   - md_in_html
+  - pymdownx.blocks.caption
   - pymdownx.details
-  - pymdownx.keys
-  - tables
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - def_list
-  - pymdownx.tasklist:
-      custom_checkbox: true
+  - pymdownx.escapeall:
+      hardbreak: true
   - pymdownx.highlight:
       anchor_linenums: true
       use_pygments: true
       pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
         # Mermaid diagrams
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.inlinehilite
-  - pymdownx.escapeall:
-      hardbreak: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
 extra_javascript:
   - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
 extra_css:
