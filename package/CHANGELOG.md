@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - dev: adds [mise](https://mise.jdx.dev/) as a development task runner
 - docs: adds tabs, snippets, captions and smartsymbols to included markdown extensions
 - dev: adds `docs:preview` task to enable previewing the documentation locally
+- dev: adds `build` task to build the C# code locally
 
 ### Changed
 - docs: reformats some of the documentation to use new markdown extensions and formatting
