@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- dev: adds [mise](https://mise.jdx.dev/) as a development task runner
 
 <!--begin_changelog-->
 
