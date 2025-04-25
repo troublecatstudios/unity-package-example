@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+<!--begin_changelog-->
+
+## [v0.1.2] - 2025-4-25
+
+
 ### Added
 - dev: adds [mise](https://mise.jdx.dev/) as a development task runner
 - docs: adds tabs, snippets, captions and smartsymbols to included markdown extensions
@@ -18,7 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - docs: updates formatting of changelog entries to proper lists
 
-<!--begin_changelog-->
+
+
 
 ## [v0.1.1] - 2025-4-23
 
