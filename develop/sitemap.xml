@@ -2,54 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/features/automation/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/features/development-project/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/features/documentation-site/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/features/openupm/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/getting_started/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/getting_started/development/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/howto/create-a-release/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/howto/regenerate-documentation/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/howto/update-a-version/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/reference/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/reference/UnityPackageExample/Example/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://troublecat.io/unity-package-example/develop/reference/UnityPackageExampleEditor/ExampleEditor/</loc>
-         <lastmod>2025-04-23</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
 </urlset>
